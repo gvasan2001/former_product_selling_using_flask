@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSmart Sustainable Farming Resource Hub</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+<body>
+<div class="main-menu">
+    
+        <h1>AgriSmart Sustainable Farming Resource Hub</h1> 
+
+        <ul>
+          <li><a href="user_home">home</a></li>
+          <li><a href="user_view_product">view product</a></li>
+          <li><a href="user_feedback_page">give feadback</a></li>
+          <li><a href="/">log out</a></li>
+      </ul>
+    </div>
+</div>
+{%for i in items %}
+
+   <div class="form">
+    <div class="img">
+        <img src="../static/upload/{{i[5]}}" alt="{{i[0]}}" height="300px">
+    </div>
+    <form action="a" method="post">
+        <h1>Buy Product</h1>
+    
+        <input type="hidden" name="product_id" value="{{i[0]}}">
+        <input type="hidden" name="farmer_id" value="{{i[7]}}">
+    
+        <div class="input">
+            <label for="product-name-{{ loop.index }}">Product Name</label>
+            <input type="text" id="product-name-{{ loop.index }}" value="{{i[1]}}" readonly>
+        </div>
+    
+        <div class="input">
+            <label for="price">Price</label>
+            <input type="number" id="price" value="{{i[3]}}" readonly>
+        </div>
+    
+        <div class="input">
+            <label for="expiry-date-{{ loop.index }}">Expiry Date</label>
+            <input type="text" id="expiry-date-{{ loop.index }}" value="{{i[4]}}" readonly>
+        </div>
+    
+        <div class="input">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" required>
+        </div>
+    
+        <div class="input">
+            <label>Total Price</label>
+            <input type="text" id="total-price" readonly>
+        </div>
+    
+        <div class="input">
+            <label for="card-holder-name-{{ loop.index }}">Card Holder Name</label>
+            <input type="text" id="card-holder-name-{{ loop.index }}" name="card_holder_name" required>
+        </div>
+    
+        <div class="input">
+            <label for="card-number-{{ loop.index }}">Card Number</label>
+            <input type="text" id="card-number-{{ loop.index }}" name="card_number" required>
+        </div>
+    
+        <div class="input">
+            <label for="card-expiry-date-{{ loop.index }}">Card Expiry Date</label>
+            <input type="text" id="card-expiry-date-{{ loop.index }}" name="card_expiry_date" required>
+        </div>
+    
+        <button type="submit">Buy Product</button>
+    </form>
+    
+    {%endfor%}
+   </div>
+
+   <script>
+    // Get references to the relevant elements
+    const priceInput = document.getElementById('price');
+    const quantityInput = document.getElementById('quantity');
+    const totalPriceInput = document.getElementById('total-price');
+
+    // Function to calculate total price
+    function calculateTotalPrice() {
+        const price = parseFloat(priceInput.value) || 0; // Get price and handle NaN
+        const quantity = parseInt(quantityInput.value) || 0; // Get quantity and handle NaN
+        const totalPrice = price * quantity; // Calculate total price
+        totalPriceInput.value = totalPrice; // Display total price
+    }
+
+    // Add event listener for quantity input change
+    quantityInput.addEventListener('input', calculateTotalPrice);
+</script>`
+</body>
+</html>

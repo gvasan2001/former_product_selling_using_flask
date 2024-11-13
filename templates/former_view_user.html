@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSmart Sustainable Farming Resource Hub</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+<body>
+<div class="main-menu">
+    
+        <h1>AgriSmart Sustainable Farming Resource Hub</h1> 
+
+        <ul>
+          <li><a href="former_home">home</a></li>
+          <li><a href="add_product">add product</a></li>
+          <li><a href="farmer_view_selles">view selles</a></li>
+          <li><a href="former_view_user">view user</a></li>
+          <li><a href="view_feedback">view feadback</a></li>
+          <li><a href="/">log out</a></li>
+    </div>
+</div>
+<div class=form>
+    <div class="table">
+     <h1 >User Detials</h1>
+     <table  >
+       <tr >
+         <th >id</th>
+         <th >Name</th>
+         <th >father name</th>
+         <th >Number</th>
+         <th >Email</th>
+         <th >Address</th>
+         <th >Pincode</th>
+    
+       </tr>
+       {% for i in items %}
+       <tr >
+   
+         <td >{{ loop.index }}</td>
+         <td > {{i[1]}}</td>
+         <td >{{i[2]}}</td>
+         <td >{{i[3]}}</td>
+         <td >{{i[4]}}</td>
+         <td >{{i[5]}}</td>
+         <td >{{i[6]}}</td>
+         
+       </tr>
+       {% endfor %}
+     </table>
+    </div>
+    </div>
+</body>
+</html>
